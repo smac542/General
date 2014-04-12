@@ -1,0 +1,178 @@
+CIS542 Project Proposal 
+ 
+1. Project Title: SMAC-CPS (Smart Motion Assisted Control - Cyber Physical System)
+ 
+2. Team: 
+Prathik Prakash
+Nachiket Nanadikar
+Sandesh Kumar
+Vinay Londhe
+ 
+3. Motivation: 
+Patients or disabled people have an extremely tough life dealing with even normal life situations. We want to design a system in such a way that such people do not have to rely on others for simple tasks such as opening/closing lights, fans. It can potentially be life saving by assisting them in conditions of emergency by notifying nurses or doctors.
+ 
+4. Goal: 
+Our system should enable patients or people with special needs to open/close blinds, turn on/off lights, fans and other electronic appliances by merely moving their fingers. We are planning to install skype on raspberry pi and use leap motion sensor to control the same. Another major goal of our project is to take it to a new level by including rehabilitation for the patients.
+ 
+5. Methodology:
+1. Initially setup raspberry pi with linux version compatible with leap motion sensor
+2. Integrate pi with leapmotion sensor
+3. Build driver circuits for webcam, lights and window-blinds.
+4. Connecting driver circuits to Arduino
+5. Integrating Arduinos with raspberry pi and complete CPS
+
+6. Project Components: 
+
+Hardware:
+Leap Motion Sensor/Kinect
+Raspberry Pi
+Webcam
+Microphone
+3 Arduinos/ MSP430 (Preferably UNO or lilypads)
+2 Servo motors
+
+Software:
+Linux on raspberry pi (Codes in C++)
+
+ 
+7. Testing and Evaluation: 
+The main goal of testing in our case is to eliminate false signals from leap motion sensor so as to not waste resources.
+(How will you evaluate your project? What metrics will you use and what will be a good outcome?) 
+ 
+8. Deliverables: 
+Baseline1: Leapmotion working with Raspberry pi
+Baseline2: Cyber Physical System with Arduinos and Raspberry pi
+Baseline3: Complete System
+ 
+Reach Goals - Extra Credit: Providing rehabilitation to people with fractures in fingers using leap motion sensor.
+ 
+9. Overall Timeline: 
+ 
+3/27 Integrating Raspberry pi with leapmotion or kinect
+4/05 Building Hardware circuits and Installing skype on Pi
+4/25 Complete CPS system by integrating Arduinos or MSP430 with Pi
+5/01 Testing the complete product
+
+
+3/25
+
+Higher priority signals
+Target audience - 
+
+Gesture
+Device
+Patient
+Doctor
+Nurse
+Room state
+Event resources
+Schedule - bool (approve action)
+
+4/2
+
+Agenda:
+
+
+
+Different events that can happen at patient 
+Drug administration - 3, 10
+\\TV Watching 
+Eating\Drinking Food\Drinks\Water - 1, 6, 9, 10
+Automatic adjustment of Lights and Blinds
+Aid from nurse - 3, 7, 8, 10
+Aid from Doctor - 3, 7, 8, 10
+Visiting hours - 1, 8, 9, 10
+Sleep - 1, 3, 7, 9, 10
+Treatment (Physiotherapy) - 3, 7, 8, 10
+Recreation - 7, 8, 9
+
+
+Gesture inputs from patient
+Patient can ask information about the schedule
+Patient can add new information about the schedule
+
+What events the patient can add (Decide what should be resolved locally and globally)
+Call Nurse
+signal for lights and blinds
+Skype call / Elastix
+Watch TV
+
+Gestures from kinect
+\\TV watching
+Water
+Nurse
+Blinds
+Lights
+Recreation - 7, 8, 9
+Skype - 1, 7, 8, 9, 10
+Sleep - 1, 3, 7, 9, 10
+
+
+Centralized system description
+ Take inputs from Nurse/Doctor
+Scheduling algorithm
+Send messages to Nurse/Doctor 
+Talk to Pi’s at the patient end
+Receive messages from Pi and update events and logged data about the patient
+Go to step 2
+
+Hardware
+Kinect
+Raspberry Pi
+Centralized Systems(Laptop)
+
+
+Code
+
+Code for taking gesture input at Kinect
+Code for raspberry pi for taking inputs from leap motion and perform required actions
+Code at central system for taking inputs and do the scheduling
+
+
+Scheduling
+After a particular event we have to define limits
+
+
+
+Data Structures: 
+
+An array of structures of Patients. Max patients is 100;
+
+struct Patient
+{
+int ID;
+string name;
+//map from time to event
+
+int NID;
+string nurse;
+}
+
+
+scheduler(int ID, string event, int time, int duration)
+{
+//Access that structure belonging to Patient
+
+//Access map of the patient
+
+//Check if the slot is available and if it does not conflict with the existing schedule add to map
+
+//If busy, check priority, if less ignore else push other events further
+
+
+}
+
+
+http://www.ceciis.foi.hr/app/public/conferences/1/papers2013/614.pdf
+
+To do
+1. Msg or call nurse from central system
+2. Open source solution for skype 
+3. Communication between patient and central system
+
+
+
+
+
+
+
